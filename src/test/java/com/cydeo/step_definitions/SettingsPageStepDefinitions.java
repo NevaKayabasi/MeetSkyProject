@@ -9,6 +9,7 @@ import com.cydeo.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Wait;
 
 import javax.security.auth.login.Configuration;
@@ -51,5 +52,27 @@ public class SettingsPageStepDefinitions {
     public void userShouldBeAbleToSeeLocaTime() throws InterruptedException {
         BrowserUtils.waitForVisibility(settingsUserPage.localtime,5);
          Assert.assertTrue(settingsUserPage.localtime.isDisplayed());
+    }
+
+    @Then("user enters speacial characters, numbers then user click enters")
+    public void userEntersSpeacialCharactersAndNumbers() throws InterruptedException {
+        settingsUserPage.settingsusername.clear();
+        Thread.sleep(2000);
+        settingsUserPage.settingsusername.sendKeys("?124@.,");
+        settingsUserPage.settingsusername.sendKeys(Keys.ENTER);
+        Thread.sleep(2000);
+    }
+
+    @Then("user should not be able to see the special characters and numbers")
+    public void userShouldGetAErrorMessage() throws InterruptedException {
+        Driver.getDriver().navigate().back();
+        Thread.sleep(1000);
+        if (meetSkyDashboardPAGE.displaynamemessage.getText().contains("?124@.,")){
+            assert false;
+        }
+        else {
+            assert true;
+        }
+
     }
 }

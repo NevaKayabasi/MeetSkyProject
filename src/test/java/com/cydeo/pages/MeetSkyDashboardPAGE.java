@@ -13,4 +13,6 @@ public class MeetSkyDashboardPAGE {
     public WebElement menubutton;
     @FindBy(xpath = "//li[@data-id='settings']")
     public WebElement settingsbutton;
+    @FindBy(xpath = "//*[@id=\"app-dashboard\"]/h2")
+    public WebElement displaynamemessage;
 }
