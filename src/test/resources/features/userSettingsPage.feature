@@ -1,31 +1,34 @@
-Feature: As a user, I should be able to change profile info settings under the Profile module
-  @MEETS10-307
-  Scenario: as a user I should be able to see full name email phone number
-    Given user is on the sign in page and type username and password
-    And user is on the dashboard and user clicks settings
-    Then user should see Full name Email Phone Number
+Feature: Folder view functionality
 
-  @MEETS10-309
-  Scenario: as a user I should be able to change my username
-    Given user is on the sign in page and type username and password
-    And user is on the dashboard and user clicks settings
-    Then user should be able to change full name to something else
+  User story :As a user, I should be able to change folder
+  view order by using Name/Size/Modified buttons
 
-  @MEETS10-311
-  Scenario: as a user should not be able to change my username with numbers and special charachters
-    Given user is on the sign in page and type username and password
-    And user is on the dashboard and user clicks settings
-    Then user enters speacial characters, numbers then user click enters
-    Then user should not be able to see the special characters and numbers
+Background: User should log in
+  Given  user is on Meetsky log in page and click tasks
+  And user is on the all files list page
 
-  @MEETS10-312
-  Scenario: as a user I should be able to make phone number as private
-      Given user is on the sign in page and type username and password
-      And user is on the dashboard and user clicks settings
-      Then user should click phone number and pick the private
 
-    @MEETS10-314
-  Scenario: as a user I should be able to see local time under local dropdown
-    Given user is on the sign in page and type username and password
-    And user is on the dashboard and user clicks settings
-    Then user should be able to see loca time
+  @MEETS10-352
+  Scenario:User can change folder view order by Name
+    And user clicks on Name button
+    Then user sees folder files in alphabetic order
+
+  @MEETS10-355
+  Scenario: User can change folder view order by Size
+    Then user click size button and sees folder files in order based on their size
+
+  @MEETS10-356
+  Scenario: User can change folder view order by Modified
+    Then user clicks on Modified button and user sees folder files in order based on their date
+
+  @MEETS10-357
+  Scenario: User can change the folder view
+    When the user clicks the toggle-view button
+    Then the folder view should change to grid view
+
+
+  @MEETS10-358
+  Scenario: Selecting all files and viewing total values
+    When the user clicks on the select all checkbox
+    Then all files in the list are selected
+    And the total values of all selected files are displayed in the first line
