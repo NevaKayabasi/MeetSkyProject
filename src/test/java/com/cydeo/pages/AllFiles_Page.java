@@ -48,8 +48,6 @@ public class AllFiles_Page {
     public List<WebElement> tableElements;
 
 
-
-
     @FindBy (xpath ="//table[@class='list-container has-controls']")
     public WebElement checkBox;
 

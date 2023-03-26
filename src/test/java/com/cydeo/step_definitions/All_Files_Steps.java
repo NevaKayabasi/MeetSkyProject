@@ -190,7 +190,6 @@ public class All_Files_Steps {
         BrowserUtils.sleep(3);
         Assert.assertTrue(allFilesPage.checkBox.isEnabled());
 
-
     }
 
     @And("the total values of all selected files are displayed in the first line")
